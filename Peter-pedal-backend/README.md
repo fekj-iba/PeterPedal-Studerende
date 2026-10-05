@@ -32,22 +32,13 @@ Hent alle sager med kunde og reservedele:
       }
     }
 
-Opret en sag, tilføj en reservedel og beregn tilbud. Eksemplerne bruger Egons sag (`caseId: 1`); brug id'et fra
-`createCase` for at arbejde på din nye sag:
+Opret en sag:
 
     mutation {
       createCase(customerId: 1, frameNumber: "ABC-123", problem: "Punkteret dæk") { id status }
     }
 
-    mutation {
-      addPart(caseId: 1, partId: 1) { id parts { name } }
-    }
-
-    mutation {
-      calculateOffer(caseId: 1) { id price }
-    }
-
-Skift status (`CREATED`, `AWAITING_APPROVAL`, `APPROVED`, `FINISHED`, `PAID`):
+Skift status på Egons sag (`CREATED`, `AWAITING_APPROVAL`, `APPROVED`, `FINISHED`, `PAID`):
 
     mutation {
       setStatus(caseId: 1, status: APPROVED) { id status }
